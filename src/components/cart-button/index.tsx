@@ -3,6 +3,8 @@ import React from "react";
 // Store
 import { Store } from "@store/index";
 import { selectById } from "@store/selectors/products";
+// Components
+import { Button } from "@components/button";
 
 interface CartButtonProps {
   id: number;
@@ -20,15 +22,15 @@ export const CartButton = ({ id }: CartButtonProps): React.ReactElement => {
   return (
     <>
       {!cartItems.includes(product.id) && (
-        <button onClick={(): void => void dispatch(Store.cart.add(product.id, dispatch))}>
+        <Button onClick={(): void => void dispatch(Store.cart.add(product.id, dispatch))}>
           Add to Cart
-        </button>
+        </Button>
       )}
 
       {cartItems.includes(product.id) && (
-        <button onClick={(): void => void dispatch(Store.cart.remove(product.id, dispatch))}>
+        <Button onClick={(): void => void dispatch(Store.cart.remove(product.id, dispatch))}>
           Remove from Cart
-        </button>
+        </Button>
       )}
     </>
   );

@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
 // Components
+import { Button } from "@components/button";
 import { CartButton } from "@components/cart-button";
 import { DefaultLayout } from "@layouts/Default";
 import { Filters } from "@components/filters";
@@ -66,14 +67,14 @@ export const ProductsView = (): React.ReactElement => {
             onChange={(e): void => setFilterQuery(e.target.value)}
           />
 
-          <button
+          <Button
             onClick={(): void => {
               setSelectedCategory("");
               setFilterQuery("");
             }}
           >
             Reset Filters
-          </button>
+          </Button>
         </Filters>
       )}
 

@@ -2,6 +2,7 @@
 import React from "react";
 // Components
 import { Alert } from "@components/alert";
+import { Button } from "@components/button";
 import { DefaultLayout } from "@layouts/Default";
 import { PriceTag } from "@components/price-tag";
 import { ProductCard } from "@components/product-card";
@@ -32,14 +33,14 @@ export const CartView = (): React.ReactElement => {
             Total: <PriceTag value={cart.total} />
           </h3>
 
-          <button
+          <Button
             onClick={(): void => {
               alert("Done!");
               void dispatch(Store.cart.reset());
             }}
           >
             Checkout
-          </button>
+          </Button>
 
           {cart.products.map(({ id }) => (
             <ProductCard key={id} id={id} />

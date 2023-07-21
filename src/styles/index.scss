@@ -1,7 +1,21 @@
-/* stylelint-disable-next-line selector-max-type */
+/* stylelint-disable selector-max-type */
+
 body {
   font-family: sans-serif;
   max-width: 700px;
   padding: 0 20px 20px;
   margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border: solid 1px #eee;
+  border-collapse: collapse;
+
+  th,
+  td {
+    text-align: left;
+    padding: 10px;
+    border: solid 1px #eee;
+  }
 }
