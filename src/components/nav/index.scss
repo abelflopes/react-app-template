@@ -1,0 +1,15 @@
+.nav {
+  border-bottom: solid 1px #ddd;
+  margin-bottom: 40px;
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-flex;
+    padding: 15px 10px;
+
+    &.is-active {
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.alert {
+  background-color: #fff1d4;
+  color: #805500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: solid 1px #ffdc94;
+  border-radius: 5px;
+  margin: 5px 0;
+
+  &__title {
+    display: block;
+  }
+
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
+  button {
+    background-color: transparent !important;
+    color: #805500 !important;
+  }
+}
