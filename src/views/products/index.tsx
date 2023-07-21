@@ -19,70 +19,68 @@ export const ProductsView = (): React.ReactElement => {
   const [filterQuery, setFilterQuery] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState<string | undefined>(undefined);
 
+  const productsCount = Store.useSelector((store) => store.products.data.length);
   const productsList = Store.useSelector(selectFiltered(filterQuery));
   const categories = Store.useSelector((state) => state.categories.data);
   const loading = Store.useSelector(
     (store) => !!store.products.loading || !!store.categories.loading
   );
-  const error = Store.useSelector((state) => state.products.error || state.categories.error);
 
   const dispatch = Store.useDispatch();
 
   React.useEffect(() => {
-    if (loading || categories.length || error) return;
-
     void dispatch(Store.categories.load());
-  }, [dispatch, loading, categories.length, error]);
+  }, [dispatch]);
 
   React.useEffect(() => {
-    if (loading || productsList.length || error) return;
-
     void dispatch(
       Store.products.load({
         category: selectedCategory,
       })
     );
-  }, [dispatch, selectedCategory, loading, productsList.length, error]);
+  }, [dispatch, selectedCategory]);
 
   return (
     <DefaultLayout>
+      {productsCount && (
+        <Filters>
+          <select
+            defaultValue={""}
+            onChange={(e): void =>
+              setSelectedCategory(e.target.value.length ? e.target.value : undefined)
+            }
+            value={selectedCategory}
+          >
+            <option disabled value={""}>
+              Category
+            </option>
+            {categories.map((i) => (
+              <option key={i}>{i}</option>
+            ))}
+          </select>
+
+          <input
+            type="search"
+            placeholder="Search"
+            value={filterQuery}
+            onChange={(e): void => setFilterQuery(e.target.value)}
+          />
+
+          <button
+            onClick={(): void => {
+              setSelectedCategory("");
+              setFilterQuery("");
+            }}
+          >
+            Reset Filters
+          </button>
+        </Filters>
+      )}
+
       {!!loading && <p>Loading...</p>}
 
       {!!productsList.length && (
         <>
-          <Filters>
-            <select
-              defaultValue={""}
-              onChange={(e): void =>
-                setSelectedCategory(e.target.value.length ? e.target.value : undefined)
-              }
-              value={selectedCategory}
-            >
-              <option disabled value={""}>
-                Category
-              </option>
-              {categories.map((i) => (
-                <option key={i}>{i}</option>
-              ))}
-            </select>
-
-            <input
-              type="search"
-              placeholder="Search"
-              value={filterQuery}
-              onChange={(e): void => setFilterQuery(e.target.value)}
-            />
-
-            <button
-              onClick={(): void => {
-                setSelectedCategory("");
-                setFilterQuery("");
-              }}
-            >
-              Reset Filters
-            </button>
-          </Filters>
-
           <table>
             <thead>
               <tr>
@@ -116,6 +114,8 @@ export const ProductsView = (): React.ReactElement => {
           </table>
         </>
       )}
+
+      {productsCount > 0 && !productsList.length && <p>No products found</p>}
     </DefaultLayout>
   );
 };
