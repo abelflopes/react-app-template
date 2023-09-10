@@ -39,9 +39,12 @@ const createRemoveAction: ActionCreator<Module, Module["remove"]> = (set) => (id
 
 // Data
 
-export const store = createPersistedStore<Module>("cart", (...a) => ({
-  ...initialState,
-  reset: createResetAction(...a),
-  add: createAddAction(...a),
-  remove: createRemoveAction(...a),
-}));
+export const store = createPersistedStore<Module>(
+  (...a) => ({
+    ...initialState,
+    reset: createResetAction(...a),
+    add: createAddAction(...a),
+    remove: createRemoveAction(...a),
+  }),
+  "cart"
+);

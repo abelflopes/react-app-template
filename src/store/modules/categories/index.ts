@@ -3,7 +3,7 @@ import { FakeStoreAPI } from "@services/fake-store-api";
 // Utils
 import { type Module, type State } from "./types";
 import { type ActionCreator } from "@store/common/types";
-import { createPersistedStore } from "@store/common/create-store";
+import { createStore } from "@store/common/create-store";
 
 // Initial State
 
@@ -34,7 +34,7 @@ const createResetAction: ActionCreator<Module, Module["reset"]> = (set) => () =>
 
 // Data
 
-export const store = createPersistedStore<Module>("categories", (...a) => ({
+export const store = createStore<Module>((...a) => ({
   ...initialState,
   load: createLoadAction(...a),
   reset: createResetAction(...a),

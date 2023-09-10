@@ -1,6 +1,6 @@
 import { type Module, type State } from "./types";
 import { type ActionCreator } from "@store/common/types";
-import { createStore } from "@store/common/create-store";
+import { createPersistedStore } from "@store/common/create-store";
 
 // Initial State
 
@@ -39,9 +39,12 @@ const createRemoveAction: ActionCreator<Module, Module["remove"]> = (set) => (id
 
 // Data
 
-export const store = createStore<Module>((...a) => ({
-  ...initialState,
-  reset: createResetAction(...a),
-  add: createAddAction(...a),
-  remove: createRemoveAction(...a),
-}));
+export const store = createPersistedStore<Module>(
+  (...a) => ({
+    ...initialState,
+    reset: createResetAction(...a),
+    add: createAddAction(...a),
+    remove: createRemoveAction(...a),
+  }),
+  "notifications"
+);

@@ -1,6 +1,7 @@
 import { type StateCreator, create } from "zustand";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { persist } from "zustand/middleware";
+import packageJson from "@root/package.json";
 
 // Block values from persisting (partial string match)
 const blockList = ["loading"];
@@ -17,12 +18,13 @@ export const createStore = <T extends object>(
 };
 
 export const createPersistedStore = <T extends object>(
-  name: string,
-  stateCreator: StateCreator<T>
+  stateCreator: StateCreator<T>,
+  name: string
 ): ReturnType<typeof createSelectorHooks<T>> => {
   if (persistedStoreEntries.includes(name)) {
     throw new Error(
-      `Persisted stores cannot have repeated names - "${name}" name is used multiple times`
+      `Persisted stores cannot have repeated names - "${name}" name is used multiple times\n` +
+        "Please refresh the app or check for duplicated definitions"
     );
   } else {
     persistedStoreEntries.push(name);
@@ -30,7 +32,7 @@ export const createPersistedStore = <T extends object>(
 
   const useStoreBase = create(
     persist<T>(stateCreator, {
-      name,
+      name: `${packageJson.name}-${packageJson.version}-${name}`,
       partialize: (state) =>
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         Object.fromEntries(
