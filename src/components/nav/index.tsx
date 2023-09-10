@@ -8,12 +8,12 @@ import { generatePath } from "react-router";
 import { allRoutes } from "@router/index";
 import { getRoute } from "@router/utils/get-route";
 // Store
-import { Store } from "@store/index";
+import { selectItemCount } from "@store/selectors";
 
 export const Nav = (): React.ReactElement => {
   const params = useParams();
 
-  const cartItemsCount = Store.useSelector((store) => store.cart.data.length);
+  const cartItemsCount = selectItemCount();
 
   const links = React.useMemo(
     () => [

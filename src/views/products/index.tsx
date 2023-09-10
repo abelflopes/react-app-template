@@ -10,7 +10,7 @@ import { Filters } from "@components/filters";
 import { PriceTag } from "@components/price-tag";
 // Store
 import { Store } from "@store/index";
-import { selectFiltered } from "@store/selectors/products";
+import { selectFiltered } from "@store/selectors";
 // Router
 import { getRoute } from "@router/utils/get-route";
 
@@ -20,26 +20,22 @@ export const ProductsView = (): React.ReactElement => {
   const [filterQuery, setFilterQuery] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState<string | undefined>(undefined);
 
-  const productsCount = Store.useSelector((store) => store.products.data.length);
-  const productsList = Store.useSelector(selectFiltered(filterQuery));
-  const categories = Store.useSelector((state) => state.categories.data);
-  const loading = Store.useSelector(
-    (store) => !!store.products.loading || !!store.categories.loading
-  );
-
-  const dispatch = Store.useDispatch();
+  const productsCount = Store.products((state) => state.data.length);
+  const productsList = selectFiltered(filterQuery);
+  const categories = Store.categories.useData();
+  const loading = !!(Store.categories.useLoading() + Store.products.useLoading());
+  const loadCategories = Store.categories.useLoad();
+  const loadProducts = Store.products.useLoad();
 
   React.useEffect(() => {
-    void dispatch(Store.categories.load());
-  }, [dispatch]);
+    loadCategories();
+  }, [loadCategories]);
 
   React.useEffect(() => {
-    void dispatch(
-      Store.products.load({
-        category: selectedCategory,
-      })
-    );
-  }, [dispatch, selectedCategory]);
+    loadProducts({
+      category: selectedCategory,
+    });
+  }, [loadProducts, selectedCategory]);
 
   return (
     <DefaultLayout>

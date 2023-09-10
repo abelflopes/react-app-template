@@ -1,16 +1,22 @@
-export type NotificationType = "error" | "success" | "warning" | "info";
+interface Actions {
+  reset: () => void;
+  add: (data: Omit<Notification, "id">) => void;
+  remove: (id: Notification["id"]) => void;
+}
 
 export interface Notification {
   /** id to identify a specific notification in order remove it from current state. */
   id: number;
   /** notification types */
-  type: NotificationType;
+  type: "error" | "success" | "warning" | "info";
   /** notification title */
   title?: string;
   /** notification description */
   description: string;
 }
 
-export interface StateProps {
+export interface State {
   data: Notification[];
 }
+
+export type Module = State & Actions;

@@ -6,15 +6,14 @@ import { Card } from "@components/card";
 import { CartButton } from "@components/cart-button";
 import { PriceTag } from "@components/price-tag";
 // Store
-import { Store } from "@store/index";
-import { selectById } from "@store/selectors/products";
+import { selectById } from "@store/selectors";
 
 interface ProductCardProps {
   id: number;
 }
 
 export const ProductCard = ({ id }: ProductCardProps): React.ReactElement => {
-  const product = Store.useSelector(selectById(id));
+  const product = selectById(id);
 
   return (
     <>

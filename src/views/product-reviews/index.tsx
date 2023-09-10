@@ -9,20 +9,19 @@ import { Card } from "@components/card";
 import { DefaultLayout } from "@layouts/Default";
 // Store
 import { Store } from "@store/index";
-import { selectById } from "@store/selectors/products";
+import { selectById } from "@store/selectors";
 
 export const ProductDetailsReviewView = (): React.ReactElement => {
   const params = useParams();
 
   if (!params.id) throw new Error("missing id");
 
-  const product = Store.useSelector(selectById(Number(params.id)));
-
-  const dispatch = Store.useDispatch();
+  const product = selectById(Number(params.id));
+  const load = Store.products.useLoad();
 
   React.useEffect(() => {
-    void dispatch(Store.products.load());
-  }, [dispatch]);
+    load();
+  }, [load]);
 
   return (
     <DefaultLayout>

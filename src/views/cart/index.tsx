@@ -8,16 +8,16 @@ import { PriceTag } from "@components/price-tag";
 import { ProductCard } from "@components/product-card";
 // Store
 import { Store } from "@store/index";
-import { selectCart } from "@store/selectors/cart";
+import { selectCart } from "@store/selectors";
 
 export const CartView = (): React.ReactElement => {
-  const cart = Store.useSelector(selectCart());
-
-  const dispatch = Store.useDispatch();
+  const cart = selectCart();
+  const loadProducts = Store.products.useLoad();
+  const emptyCart = Store.cart.useReset();
 
   React.useEffect(() => {
-    void dispatch(Store.products.load());
-  }, [dispatch]);
+    loadProducts();
+  }, [loadProducts]);
 
   return (
     <DefaultLayout>
@@ -36,7 +36,7 @@ export const CartView = (): React.ReactElement => {
           <Button
             onClick={(): void => {
               alert("Done!");
-              void dispatch(Store.cart.reset());
+              emptyCart();
             }}
           >
             Checkout

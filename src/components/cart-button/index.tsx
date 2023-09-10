@@ -2,7 +2,7 @@
 import React from "react";
 // Store
 import { Store } from "@store/index";
-import { selectById } from "@store/selectors/products";
+import { selectById } from "@store/selectors";
 // Components
 import { Button } from "@components/button";
 
@@ -11,26 +11,22 @@ interface CartButtonProps {
 }
 
 export const CartButton = ({ id }: CartButtonProps): React.ReactElement => {
-  const product = Store.useSelector(selectById(id));
+  const product = selectById(id);
 
   if (!product) throw new Error("missing product to display");
 
-  const cartItems = Store.useSelector((store) => store.cart.data);
-
-  const dispatch = Store.useDispatch();
+  const cartItems = Store.cart.useData();
+  const add = Store.cart.useAdd();
+  const remove = Store.cart.useRemove();
 
   return (
     <>
       {!cartItems.includes(product.id) && (
-        <Button onClick={(): void => void dispatch(Store.cart.add(product.id, dispatch))}>
-          Add to Cart
-        </Button>
+        <Button onClick={(): void => add(product.id)}>Add to Cart</Button>
       )}
 
       {cartItems.includes(product.id) && (
-        <Button onClick={(): void => void dispatch(Store.cart.remove(product.id, dispatch))}>
-          Remove from Cart
-        </Button>
+        <Button onClick={(): void => remove(product.id)}>Remove from Cart</Button>
       )}
     </>
   );

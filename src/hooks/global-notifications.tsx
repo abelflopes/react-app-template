@@ -1,31 +1,22 @@
 // React
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 // Redux
-import { Store, StoreState } from "@store/index";
+import { State } from "@store/modules/notifications/types";
+import { Store } from "@store/index";
 
-export const useGlobalNotifications = (): [
-  StoreState["notifications"]["data"],
-  (id: number) => void,
-] => {
-  // Store
-  const notifications = Store.useSelector((state) => state.notifications);
-  // Dispatch
-  const dispatch = Store.useDispatch();
-
-  const removeNotification = useCallback(
-    (id: number): void => void dispatch(Store.notifications.remove(id)),
-    [dispatch]
-  );
+export const useGlobalNotifications = (): [State["data"], (id: number) => void] => {
+  const notifications = Store.notifications.useData();
+  const removeNotification = Store.notifications.useRemove();
 
   useEffect(() => {
-    if (!notifications.data) return;
+    if (!notifications) return;
 
-    notifications.data.forEach((notification) => {
+    notifications.forEach((notification) => {
       const timeout = setTimeout(() => removeNotification(notification.id), 8000);
 
       return () => clearTimeout(timeout);
     });
-  }, [notifications.data, dispatch, removeNotification]);
+  }, [notifications, removeNotification]);
 
-  return [notifications.data, removeNotification];
+  return [notifications, removeNotification];
 };

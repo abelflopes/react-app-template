@@ -14,15 +14,14 @@ import { getRoute } from "@router/utils/get-route";
 export const ProductDetailsMainView = (): React.ReactElement => {
   const params = useParams();
 
-  const hasProducts = Store.useSelector((state) => !!state.products.data.length);
-
-  const dispatch = Store.useDispatch();
+  const hasProducts = Store.products((state) => !!state.data.length);
+  const loadProducts = Store.products.useLoad();
 
   React.useEffect(() => {
     if (hasProducts) return;
 
-    void dispatch(Store.products.load());
-  }, [dispatch, hasProducts]);
+    loadProducts();
+  }, [hasProducts, loadProducts]);
 
   return (
     <DefaultLayout>
