@@ -13,4 +13,4 @@ Template repo for react apps using redux-toolkit, css-modules and vite.
   - `npm run lint`- Run all linters
   - `npm run lint:code`- lints TS files, supports ` -- --fix` suffix for auto-fixing
   - `npm run lint:style`- lints SCSS files, supports ` -- --fix` suffix for auto-fixing
-  - `npm run lint:format`- lints all files (formatting only), supports ` -- --write` suffix for auto-fixing
+  - `npm run format`- lints all files (formatting only), supports ` -- --write` suffix for auto-fixing

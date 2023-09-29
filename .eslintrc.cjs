@@ -1,93 +1,46 @@
-module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-  ],
-  ignorePatterns: ["dist", ".eslintrc.cjs", ".prettierrc.cjs"],
-  parser: "@typescript-eslint/parser",
-  plugins: [
-    // React
-    "react-hooks",
-    // Formatting
-    "prettier",
-    "import-helpers",
-    // Docs
-    "eslint-plugin-tsdoc",
-    // Bundling
-    "react-refresh",
-  ],
+/** @type import("eslint").Linter.Config */
+const config = {
+  extends: "@abelflopes/eslint-config-tsr-pro",
   rules: {
-    // Javascript
-    "eqeqeq": 2,
-    "no-console": 2,
-    "require-await": 2,
-    "vars-on-top": 2,
-    // React
-    "react/prop-types": "off",
-    "react/display-name": "off",
-    "react/jsx-first-prop-new-line": [2, "multiline"],
-    "react/jsx-max-props-per-line": [2, { maximum: 2, when: "multiline" }],
-    "react/jsx-indent-props": [2, 2],
-    "react/jsx-closing-bracket-location": [2, "tag-aligned"],
-    "react/self-closing-comp": 2,
-    "react-hooks/rules-of-hooks": 2, // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": 2, // Checks effect dependencies
-    "react/react-in-jsx-scope": "off",
-    // Formatting - Generic
-    "max-len": [
-      2,
-      {
-        code: 100, // Sync with prettier
-        ignoreTemplateLiterals: true,
-        ignoreStrings: true,
-        ignoreRegExpLiterals: true,
-        ignoreComments: true,
-      },
-    ],
-    "padding-line-between-statements": [
-      "error",
-      { blankLine: "always", prev: "*", next: "export" },
-      { blankLine: "always", prev: "export", next: "*" },
-      { blankLine: "always", prev: "*", next: "try" },
-    ],
-    "arrow-body-style": [2, "as-needed"],
-    "prettier/prettier": [
+    // prefer component arrow functions
+    "react/function-component-definition": [
       1,
       {
-        endOfLine: "lf", // Sync with prettier
+        namedComponents: "arrow-function",
+        unnamedComponents: "arrow-function",
       },
     ],
-    "linebreak-style": ["error", "unix"], // Force linux line break style / Sync with prettier
-    // Formatting - Imports
-    // https://github.com/Tibfib/eslint-plugin-import-helpers/blob/master/docs/rules/order-imports.md
-    "import-helpers/order-imports": [
+    // ignore to allow usage of tsconfig aliases
+    "import/no-unresolved": 1,
+    // allow abbreviations
+    "unicorn/prevent-abbreviations": [
       1,
       {
-        // newlinesBetween: "always", // new line between groups
-        // groups: ["/^react/", "module", ["parent", "sibling", "index"]],
-        // groups: ["/react/", "/layout/", "/partial/", "/component/", "/redux/", "/rout/", "/util/"],
-        // alphabetize: { order: "asc", ignoreCase: true },
-        groups: ["/^react/"],
-        // habetize: { order: "ignore" },
+        checkProperties: true,
+        allowList: {
+          db: true,
+          param: true,
+          params: true,
+          props: true,
+          Props: true,
+        },
       },
     ],
-    // https://eslint.org/docs/rules/sort-imports
-    "sort-imports": [
+    "@typescript-eslint/strict-boolean-expressions": 1,
+    "unicorn/filename-case": [
       1,
       {
-        ignoreCase: false,
-        ignoreDeclarationSort: false,
-        ignoreMemberSort: true,
-        memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
-        allowSeparatedGroups: true,
+        cases: {
+          kebabCase: true,
+          pascalCase: true,
+        },
       },
     ],
-    // Docs
-    "tsdoc/syntax": 1,
-    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+    "react/button-has-type": 1,
+    "no-implicit-coercion": 1,
+    "unicorn/no-array-reduce": 1,
+    "unicorn/no-array-for-each": 1,
   },
 };
+
+module.exports = config;
