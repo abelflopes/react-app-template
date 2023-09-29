@@ -1,7 +1,7 @@
 /// React
 import React from "react";
 // Layouts
-import { LayoutProps } from "@layouts/types";
+import { type LayoutProps } from "@layouts/types";
 
 interface ErrorLayoutProps extends LayoutProps {
   title: React.ReactNode;
@@ -12,7 +12,7 @@ export const ErrorLayout = ({
   title,
   description,
   children,
-}: ErrorLayoutProps): React.ReactElement => (
+}: Readonly<ErrorLayoutProps>): React.ReactElement => (
   <main className="container">
     <h2>{title}</h2>
     <p>{description}</p>

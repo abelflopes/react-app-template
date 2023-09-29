@@ -4,7 +4,7 @@
  * @returns string or null
  */
 
-export const parseError = (e: unknown): string | null => {
+export const parseError = (e: unknown): string | undefined => {
   let messageText = "";
 
   const error: Error =
@@ -17,5 +17,5 @@ export const parseError = (e: unknown): string | null => {
 
   messageText += error.message;
 
-  return messageText.length ? messageText : null;
+  return messageText.length > 0 ? messageText : undefined;
 };

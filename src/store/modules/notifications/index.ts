@@ -46,5 +46,5 @@ export const store = createPersistedStore<Module>(
     add: createAddAction(...a),
     remove: createRemoveAction(...a),
   }),
-  "notifications"
+  "notifications",
 );

@@ -16,7 +16,7 @@ export const CartView = (): React.ReactElement => {
   const emptyCart = Store.cart.useReset();
 
   React.useEffect(() => {
-    loadProducts();
+    void loadProducts();
   }, [loadProducts]);
 
   return (
@@ -35,10 +35,8 @@ export const CartView = (): React.ReactElement => {
 
           <Button
             onClick={(): void => {
-              alert("Done!");
               emptyCart();
-            }}
-          >
+            }}>
             Checkout
           </Button>
 

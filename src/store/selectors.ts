@@ -1,16 +1,17 @@
 import { Store } from "@store/index";
+import { type Product } from "@services/fake-store-api";
 
-export const selectItemCount = () => Store.cart((state) => state.data.length);
+export const selectItemCount = (): number => Store.cart((state) => state.data.length);
 
-export const selectById = (id: number) =>
+export const selectById = (id: number): Product | undefined =>
   Store.products((state) => state.data.find((i) => i.id === id));
 
-export const selectFiltered = (query: string) =>
+export const selectFiltered = (query: string): Product[] =>
   Store.products((state) =>
-    state.data.filter((i) => JSON.stringify(i).toLowerCase().includes(query.toLowerCase()))
+    state.data.filter((i) => JSON.stringify(i).toLowerCase().includes(query.toLowerCase())),
   );
 
-export const selectCart = () =>
+export const selectCart = (): { total: number; products: Product[] } =>
   Store.products((state) => {
     const cart = Store.cart.getState().data;
 

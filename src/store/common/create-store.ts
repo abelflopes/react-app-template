@@ -8,7 +8,7 @@ const blockList = ["loading"];
 const persistedStoreEntries: string[] = [];
 
 export const createStore = <T extends object>(
-  stateCreator: StateCreator<T>
+  stateCreator: StateCreator<T>,
 ): ReturnType<typeof createSelectorHooks<T>> => {
   const useStoreBase = create(stateCreator);
 
@@ -19,12 +19,12 @@ export const createStore = <T extends object>(
 
 export const createPersistedStore = <T extends object>(
   stateCreator: StateCreator<T>,
-  name: string
+  name: string,
 ): ReturnType<typeof createSelectorHooks<T>> => {
   if (persistedStoreEntries.includes(name)) {
     throw new Error(
       `Persisted stores cannot have repeated names - "${name}" name is used multiple times\n` +
-        "Please refresh the app or check for duplicated definitions"
+        "Please refresh the app or check for duplicated definitions",
     );
   } else {
     persistedStoreEntries.push(name);
@@ -37,10 +37,10 @@ export const createPersistedStore = <T extends object>(
         // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
         Object.fromEntries(
           Object.entries(state).filter(([key]) =>
-            blockList.some((item) => !key.toLowerCase().includes(item.toLowerCase()))
-          )
+            blockList.some((item) => !key.toLowerCase().includes(item.toLowerCase())),
+          ),
         ) as T,
-    })
+    }),
   );
 
   const useStore = createSelectorHooks(useStoreBase);

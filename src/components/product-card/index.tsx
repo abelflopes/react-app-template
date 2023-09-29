@@ -12,7 +12,7 @@ interface ProductCardProps {
   id: number;
 }
 
-export const ProductCard = ({ id }: ProductCardProps): React.ReactElement => {
+export const ProductCard = ({ id }: Readonly<ProductCardProps>): React.ReactElement => {
   const product = selectById(id);
 
   return (
@@ -28,8 +28,7 @@ export const ProductCard = ({ id }: ProductCardProps): React.ReactElement => {
             description: product.description,
             category: product.category,
             price: <PriceTag value={product.price} />,
-          }}
-        >
+          }}>
           <CartButton id={product.id} />
         </Card>
       )}

@@ -34,7 +34,7 @@ export const Nav = (): React.ReactElement => {
         label: `${allRoutes.cart.name} (${cartItemsCount})`,
       },
     ],
-    [cartItemsCount, params]
+    [cartItemsCount, params],
   );
 
   return (
@@ -45,8 +45,7 @@ export const Nav = (): React.ReactElement => {
           className={({ isActive }): string =>
             ["nav__link", ...(isActive ? ["is-active"] : [])].join(" ")
           }
-          to={i.to}
-        >
+          to={i.to}>
           {i.label}
         </NavLink>
       ))}

@@ -6,8 +6,9 @@ import "./styles/index.scss";
 // Router
 import { DefaultRouter } from "@router/router/Default";
 
-createRoot(document.getElementById("root")!).render(
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+createRoot(document.querySelector("#root")!).render(
   <React.StrictMode>
     <DefaultRouter />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

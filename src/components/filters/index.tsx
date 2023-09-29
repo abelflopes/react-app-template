@@ -7,6 +7,6 @@ interface FiltersProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-export const Filters = ({ children }: FiltersProps): React.ReactElement => (
+export const Filters = ({ children }: Readonly<FiltersProps>): React.ReactElement => (
   <section className="filters">{children}</section>
 );

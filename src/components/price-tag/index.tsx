@@ -5,4 +5,6 @@ interface PriceTagProps {
   value: number;
 }
 
-export const PriceTag = ({ value }: PriceTagProps): React.ReactElement => <span>€ {value}</span>;
+export const PriceTag = ({ value }: Readonly<PriceTagProps>): React.ReactElement => (
+  <span>€ {value}</span>
+);

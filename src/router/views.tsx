@@ -1,10 +1,11 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { CartView } from "@views/cart";
 import { Error404View } from "@views/error-404";
 import { HomeView } from "@views/home";
 import { ProductDetailsMainView } from "@views/product-details";
 import { ProductDetailsReviewView } from "@views/product-reviews";
 import { ProductsView } from "@views/products";
-import { View } from "@router/index";
+import type { View } from "@router/index";
 
 export const home: View = {
   name: "Home",

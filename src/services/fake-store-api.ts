@@ -10,20 +10,16 @@ export interface Product {
   title: string;
 }
 
-export class FakeStoreAPI {
-  private static apiHost = "//fakestoreapi.com";
+const apiHost = "//fakestoreapi.com";
 
-  public static getAllCategories = async (): Promise<Category[]> =>
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    (await (await fetch(`${FakeStoreAPI.apiHost}/products/categories`)).json()) as Category[];
+export const getAllCategories = async (): Promise<Category[]> =>
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, unicorn/no-await-expression-member
+  (await (await fetch(`${apiHost}/products/categories`)).json()) as Category[];
 
-  public static getAllProducts = async (): Promise<Product[]> =>
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    (await (await fetch(`${FakeStoreAPI.apiHost}/products`)).json()) as Product[];
+export const getAllProducts = async (): Promise<Product[]> =>
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, unicorn/no-await-expression-member
+  (await (await fetch(`${apiHost}/products`)).json()) as Product[];
 
-  public static getAllProductsByCategory = async (category: string): Promise<Product[]> =>
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    (await (
-      await fetch(`${FakeStoreAPI.apiHost}/products/category/${category}`)
-    ).json()) as Product[];
-}
+export const getAllProductsByCategory = async (category: string): Promise<Product[]> =>
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, unicorn/no-await-expression-member
+  (await (await fetch(`${apiHost}/products/category/${category}`)).json()) as Product[];

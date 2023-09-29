@@ -1,5 +1,5 @@
 // Router
-import { RouteObject } from "react-router-dom";
+import type { RouteObject } from "react-router-dom";
 // Views & Redirects
 import * as Redirects from "./redirects";
 import * as Views from "./views";

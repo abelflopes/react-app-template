@@ -20,7 +20,7 @@ export const ProductDetailsReviewView = (): React.ReactElement => {
   const load = Store.products.useLoad();
 
   React.useEffect(() => {
-    load();
+    void load();
   }, [load]);
 
   return (

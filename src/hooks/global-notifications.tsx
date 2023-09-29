@@ -1,7 +1,7 @@
 // React
 import { useEffect } from "react";
 // Redux
-import { State } from "@store/modules/notifications/types";
+import type { State } from "@store/modules/notifications/types";
 import { Store } from "@store/index";
 
 export const useGlobalNotifications = (): [State["data"], (id: number) => void] => {
@@ -12,9 +12,13 @@ export const useGlobalNotifications = (): [State["data"], (id: number) => void] 
     if (!notifications) return;
 
     notifications.forEach((notification) => {
-      const timeout = setTimeout(() => removeNotification(notification.id), 8000);
+      const timeout = setTimeout(() => {
+        removeNotification(notification.id);
+      }, 8000);
 
-      return () => clearTimeout(timeout);
+      return () => {
+        clearTimeout(timeout);
+      };
     });
   }, [notifications, removeNotification]);
 

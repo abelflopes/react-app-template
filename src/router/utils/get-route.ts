@@ -1,5 +1,5 @@
 // Router config
-import { allRoutes, RouteIndex } from "../index";
+import { allRoutes, type RouteIndex } from "../index";
 import { requiredRoutePath } from "./required-route-path";
 
 /**

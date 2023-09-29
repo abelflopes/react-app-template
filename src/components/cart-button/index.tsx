@@ -10,7 +10,7 @@ interface CartButtonProps {
   id: number;
 }
 
-export const CartButton = ({ id }: CartButtonProps): React.ReactElement => {
+export const CartButton = ({ id }: Readonly<CartButtonProps>): React.ReactElement => {
   const product = selectById(id);
 
   if (!product) throw new Error("missing product to display");
@@ -22,11 +22,21 @@ export const CartButton = ({ id }: CartButtonProps): React.ReactElement => {
   return (
     <>
       {!cartItems.includes(product.id) && (
-        <Button onClick={(): void => add(product.id)}>Add to Cart</Button>
+        <Button
+          onClick={(): void => {
+            add(product.id);
+          }}>
+          Add to Cart
+        </Button>
       )}
 
       {cartItems.includes(product.id) && (
-        <Button onClick={(): void => remove(product.id)}>Remove from Cart</Button>
+        <Button
+          onClick={(): void => {
+            remove(product.id);
+          }}>
+          Remove from Cart
+        </Button>
       )}
     </>
   );

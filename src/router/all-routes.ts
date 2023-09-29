@@ -1,4 +1,4 @@
-// this file prevents route index conflicts between redirects and views
+// This file prevents route index conflicts between redirects and views
 
 export * from "./redirects";
 

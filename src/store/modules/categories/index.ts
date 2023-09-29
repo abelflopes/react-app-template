@@ -1,5 +1,5 @@
 // API
-import { FakeStoreAPI } from "@services/fake-store-api";
+import * as FakeStoreAPI from "@services/fake-store-api";
 // Utils
 import { type Module, type State } from "./types";
 import { type ActionCreator } from "@store/common/types";
@@ -9,7 +9,7 @@ import { createStore } from "@store/common/create-store";
 
 const initialState: State = {
   loading: 0,
-  error: null,
+  error: undefined,
   data: [],
 };
 

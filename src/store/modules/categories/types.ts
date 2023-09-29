@@ -1,4 +1,4 @@
-import { Category } from "@services/fake-store-api";
+import type { Category } from "@services/fake-store-api";
 
 interface Actions {
   load: () => Promise<void>;
@@ -7,7 +7,7 @@ interface Actions {
 
 export interface State {
   loading: number;
-  error: string | null;
+  error: string | undefined;
   data: Category[];
 }
 

@@ -1,5 +1,6 @@
+/* eslint-disable react/react-in-jsx-scope */
 // Router
-import { View } from "@router/index";
+import type { View } from "@router/index";
 // Utils
 import { ViewRedirect } from "@router/utils/ViewRedirect";
 // Views

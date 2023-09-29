@@ -5,13 +5,13 @@ interface Actions {
 }
 
 export interface Notification {
-  /** id to identify a specific notification in order remove it from current state. */
+  /** Id to identify a specific notification in order remove it from current state. */
   id: number;
-  /** notification types */
+  /** Notification types */
   type: "error" | "success" | "warning" | "info";
-  /** notification title */
+  /** Notification title */
   title?: string;
-  /** notification description */
+  /** Notification description */
   description: string;
 }
 

@@ -28,9 +28,9 @@ export const Card = ({
   data,
   children,
   ...nativeProps
-}: CardProps): React.ReactElement => (
+}: Readonly<CardProps>): React.ReactElement => (
   <div {...nativeProps} className="card">
-    {image && <img className="card__image" src={image} />}
+    {image && <img alt={label} className="card__image" src={image} />}
 
     <div className="card__content">
       <h3>{label}</h3>
