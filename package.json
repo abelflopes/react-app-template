@@ -10,6 +10,8 @@
     "format": "prettier . --check --cache --ignore-unknown",
     "lint:style": "stylelint \"**.scss\"",
     "preview": "vite preview",
+    "todo": "npx leasot '**/**' '.**/**' -i '**/node_modules/**' -S -x",
+    "clean": "rm -rf generated-docs dist node_modules"
   },
   "dependencies": {
     "auto-zustand-selectors-hook": "^2.0.0",
