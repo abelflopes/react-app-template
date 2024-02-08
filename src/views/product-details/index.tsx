@@ -27,9 +27,9 @@ export const ProductDetailsMainView = (): React.ReactElement => {
     <DefaultLayout>
       <h2>Product Details</h2>
 
-      {!params.id && <Alert title="Unable to get product id" />}
+      {params.id === undefined && <Alert title="Unable to get product id" />}
 
-      {params.id && <ProductCard id={Number(params.id)} />}
+      {params.id !== undefined && <ProductCard id={Number(params.id)} />}
 
       <Link to={generatePath(getRoute("productDetailsReviews"), params)}>Reviews</Link>
     </DefaultLayout>

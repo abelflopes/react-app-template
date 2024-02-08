@@ -6,8 +6,11 @@ import "./styles/index.scss";
 // Router
 import { DefaultRouter } from "@router/router/Default";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-createRoot(document.querySelector("#root")!).render(
+const rootEl = document.querySelector("#root");
+
+if (!rootEl) throw new Error("Missing root element");
+
+createRoot(rootEl).render(
   <React.StrictMode>
     <DefaultRouter />
   </React.StrictMode>,

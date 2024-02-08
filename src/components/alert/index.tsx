@@ -16,10 +16,10 @@ export interface AlertProps {
 export const Alert = ({ title, onClose, children }: Readonly<AlertProps>): React.ReactElement => (
   <div className={styles.root} role="alert">
     <div>
-      {title && <b className={styles.title}>{title}</b>}
+      {title !== undefined && <b className={styles.title}>{title}</b>}
       {children}
     </div>
-    {onClose && (
+    {onClose !== undefined && (
       <Button onClick={onClose}>
         <FaX />
       </Button>

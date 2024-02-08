@@ -34,7 +34,7 @@ export const createPersistedStore = <T extends object>(
     persist<T>(stateCreator, {
       name: `${packageJson.name}-${packageJson.version}-${name}`,
       partialize: (state) =>
-        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- needed due to casting of object entries keys to string
         Object.fromEntries(
           Object.entries(state).filter(([key]) =>
             blockList.some((item) => !key.toLowerCase().includes(item.toLowerCase())),

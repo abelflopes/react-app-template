@@ -1,6 +1,6 @@
 // React
 import { Link, useParams } from "react-router-dom";
-import React from "react";
+import React, { useMemo } from "react";
 import { generatePath } from "react-router";
 // Components
 import { Button } from "@components/button";
@@ -23,9 +23,14 @@ export const ProductsView = (): React.ReactElement => {
   const productsCount = Store.products((state) => state.data.length);
   const productsList = selectFiltered(filterQuery);
   const categories = Store.categories.useData();
-  const loading = !!(Store.categories.useLoading() + Store.products.useLoading());
+  const categoriesLoading = Store.categories.useLoading();
+  const productsLoading = Store.products.useLoading();
   const loadCategories = Store.categories.useLoad();
   const loadProducts = Store.products.useLoad();
+  const loading = useMemo(
+    () => Boolean(categoriesLoading) || Boolean(productsLoading),
+    [categoriesLoading, productsLoading],
+  );
 
   React.useEffect(() => {
     void loadCategories();
@@ -39,7 +44,7 @@ export const ProductsView = (): React.ReactElement => {
 
   return (
     <DefaultLayout>
-      {productsCount && (
+      {productsCount > 0 && (
         <Filters>
           <select
             defaultValue=""
@@ -47,7 +52,7 @@ export const ProductsView = (): React.ReactElement => {
             onChange={(e): void => {
               setSelectedCategory(e.target.value.length > 0 ? e.target.value : undefined);
             }}>
-            <option disabled value="">
+            <option value="" disabled>
               Category
             </option>
             {categories.map((i) => (
@@ -74,7 +79,7 @@ export const ProductsView = (): React.ReactElement => {
         </Filters>
       )}
 
-      {!!loading && <p>Loading...</p>}
+      {Boolean(loading) && <p>Loading...</p>}
 
       {productsList.length > 0 && (
         <table>
@@ -82,7 +87,7 @@ export const ProductsView = (): React.ReactElement => {
             <tr>
               <th>Name</th>
               <th>Price</th>
-              <th />
+              <th aria-label="Actions" />
             </tr>
           </thead>
           <tbody>
@@ -97,10 +102,10 @@ export const ProductsView = (): React.ReactElement => {
                     {product.title}
                   </Link>
                 </td>
-                <td>
+                <td aria-label="Price">
                   <PriceTag value={product.price} />
                 </td>
-                <td>
+                <td aria-label="Actions">
                   <CartButton id={product.id} />
                 </td>
               </tr>
@@ -109,7 +114,7 @@ export const ProductsView = (): React.ReactElement => {
         </table>
       )}
 
-      {productsCount > 0 && productsList?.length === 0 && <p>No products found</p>}
+      {productsCount > 0 && productsList.length === 0 && <p>No products found</p>}
     </DefaultLayout>
   );
 };

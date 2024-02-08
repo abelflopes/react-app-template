@@ -30,12 +30,12 @@ export const Card = ({
   ...nativeProps
 }: Readonly<CardProps>): React.ReactElement => (
   <div {...nativeProps} className="card">
-    {image && <img alt={label} className="card__image" src={image} />}
+    {image !== undefined && <img alt={label} className="card__image" src={image} />}
 
     <div className="card__content">
       <h3>{label}</h3>
 
-      {data && (
+      {data !== undefined && (
         <ul>
           {Object.entries(data).map(([key, value]) => (
             <li key={key}>

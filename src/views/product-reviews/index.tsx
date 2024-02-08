@@ -27,7 +27,7 @@ export const ProductDetailsReviewView = (): React.ReactElement => {
     <DefaultLayout>
       <h2>Product Details</h2>
 
-      {product && (
+      {product !== undefined && (
         <Card
           label={product.title}
           data={{

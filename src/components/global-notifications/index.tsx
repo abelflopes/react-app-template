@@ -10,7 +10,7 @@ export const GlobalNotifications = (): React.ReactElement[] => {
   const removeNotification = Store.notifications.useRemove();
 
   useEffect(() => {
-    if (!notifications) return;
+    if (!notifications.length) return;
 
     notifications.forEach((notification) => {
       const timeout = setTimeout(() => {

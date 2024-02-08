@@ -1,4 +1,4 @@
-import type { Category } from "@services/fake-store-api";
+import { type Category } from "@services/fake-store-api";
 
 interface Actions {
   load: () => Promise<void>;

@@ -1,6 +1,6 @@
-/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable react/react-in-jsx-scope -- ignored to prevent unuused import error */
 // Router
-import type { View } from "@router/index";
+import { type View } from "@router/index";
 // Utils
 import { ViewRedirect } from "@router/utils/ViewRedirect";
 // Views
@@ -21,3 +21,4 @@ export const productDetails: View = {
     element: <ViewRedirect route={Views.productDetailsMain} />,
   },
 };
+/* eslint-enable */

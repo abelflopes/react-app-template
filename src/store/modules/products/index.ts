@@ -21,7 +21,7 @@ const createLoadAction: ActionCreator<Module, Module["load"]> = (set) => async (
 
   try {
     const data = options?.category
-      ? await FakeStoreAPI.getAllProductsByCategory(options?.category)
+      ? await FakeStoreAPI.getAllProductsByCategory(options.category)
       : await FakeStoreAPI.getAllProducts();
     set(() => ({ data }));
   } catch (error: unknown) {

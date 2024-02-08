@@ -42,10 +42,10 @@ export const Nav = (): React.ReactElement => {
       {links.map((i) => (
         <NavLink
           key={i.to}
+          to={i.to}
           className={({ isActive }): string =>
             ["nav__link", ...(isActive ? ["is-active"] : [])].join(" ")
-          }
-          to={i.to}>
+          }>
           {i.label}
         </NavLink>
       ))}

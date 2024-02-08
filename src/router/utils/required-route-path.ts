@@ -1,7 +1,7 @@
 // Router
-import type { NavigateProps } from "react-router-dom";
+import { type NavigateProps } from "react-router-dom";
 // Router config
-import type { View } from "../index";
+import { type View } from "../index";
 
 /**
  * Return a defined route path, throw error if its undefined
@@ -12,10 +12,11 @@ import type { View } from "../index";
 export const requiredRoutePath = (view: View): NavigateProps["to"] => {
   const to = view.options.path;
 
-  if (to === undefined)
+  if (to === undefined) {
     throw new Error(
       `Missing target route of redirect on route:\n\n ${JSON.stringify(view, undefined, 2)}\n\n`,
     );
+  }
 
   return to;
 };

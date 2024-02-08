@@ -17,9 +17,9 @@ export const ProductCard = ({ id }: Readonly<ProductCardProps>): React.ReactElem
 
   return (
     <>
-      {!product && <Alert title="Unable to display product" />}
+      {product === undefined && <Alert title="Unable to display product" />}
 
-      {product && (
+      {product !== undefined && (
         <Card
           key={product.id}
           image={product.image}
