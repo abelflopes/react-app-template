@@ -9,7 +9,7 @@ import { ProductCard } from "@components/product-card";
 // Store
 import { Store } from "@store/index";
 // Router
-import { getRoute } from "@router/utils/get-route";
+import { routesList } from "@router/routes-list";
 
 export const ProductDetailsMainView = (): React.ReactElement => {
   const params = useParams();
@@ -31,7 +31,12 @@ export const ProductDetailsMainView = (): React.ReactElement => {
 
       {params.id !== undefined && <ProductCard id={Number(params.id)} />}
 
-      <Link to={generatePath(getRoute("productDetailsReviews"), params)}>Reviews</Link>
+      <Link
+        to={generatePath(routesList.productDetailsReviews, {
+          id: params.id ?? null,
+        })}>
+        Reviews
+      </Link>
     </DefaultLayout>
   );
 };

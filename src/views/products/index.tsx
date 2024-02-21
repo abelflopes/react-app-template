@@ -1,5 +1,5 @@
 // React
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useMemo } from "react";
 import { generatePath } from "react-router";
 // Components
@@ -12,11 +12,9 @@ import { PriceTag } from "@components/price-tag";
 import { Store } from "@store/index";
 import { selectFiltered } from "@store/selectors";
 // Router
-import { getRoute } from "@router/utils/get-route";
+import { routesList } from "@router/routes-list";
 
 export const ProductsView = (): React.ReactElement => {
-  const params = useParams();
-
   const [filterQuery, setFilterQuery] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState<string | undefined>();
 
@@ -95,9 +93,8 @@ export const ProductsView = (): React.ReactElement => {
               <tr key={product.id}>
                 <td>
                   <Link
-                    to={generatePath(getRoute("productDetails"), {
-                      ...params,
-                      id: product.id,
+                    to={generatePath(routesList.productDetails, {
+                      id: String(product.id),
                     })}>
                     {product.title}
                   </Link>

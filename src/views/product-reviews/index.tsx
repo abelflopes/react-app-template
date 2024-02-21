@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
 // Router
-import { getRoute } from "@router/utils/get-route";
+import { routesList } from "@router/routes-list";
 // Components
 import { Card } from "@components/card";
 import { DefaultLayout } from "@layouts/Default";
@@ -37,7 +37,12 @@ export const ProductDetailsReviewView = (): React.ReactElement => {
         />
       )}
 
-      <Link to={generatePath(getRoute("productDetailsMain"), params)}>Details</Link>
+      <Link
+        to={generatePath(routesList.productDetailsMain, {
+          id: params.id ?? null,
+        })}>
+        Details
+      </Link>
     </DefaultLayout>
   );
 };

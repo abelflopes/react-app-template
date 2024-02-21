@@ -5,8 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
 // Routes
-import { allRoutes } from "@router/index";
-import { getRoute } from "@router/utils/get-route";
+import { routesList } from "@router/routes-list";
 // Store
 import { selectItemCount } from "@store/selectors";
 
@@ -18,20 +17,20 @@ export const Nav = (): React.ReactElement => {
   const links = React.useMemo(
     () => [
       {
-        to: generatePath(getRoute("home"), params),
-        label: allRoutes.home.name,
+        to: generatePath(routesList.home, params),
+        label: "Home",
       },
       {
-        to: generatePath(getRoute("products"), params),
-        label: allRoutes.products.name,
+        to: generatePath(routesList.products, params),
+        label: "Products",
       },
       {
-        to: generatePath(getRoute("productsList"), params),
-        label: `${allRoutes.productsList.name} (redirect)`,
+        to: generatePath(routesList.productsList, params),
+        label: `Products List (redirect)`,
       },
       {
-        to: generatePath(getRoute("cart"), params),
-        label: `${allRoutes.cart.name} (${cartItemsCount})`,
+        to: generatePath(routesList.cart, params),
+        label: `Cart (${cartItemsCount})`,
       },
     ],
     [cartItemsCount, params],
