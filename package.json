@@ -26,7 +26,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
-    "@abelflopes/eslint-config-tsr-pro": "^1.0.2",
+    "@abelflopes/eslint-config-tsr-pro": "^2.0.0",
     "@abelflopes/prettier-config-pro": "^1.0.0",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
