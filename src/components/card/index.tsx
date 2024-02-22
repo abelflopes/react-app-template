@@ -1,6 +1,4 @@
-// Styles
 import "./index.scss";
-/// React
 import React from "react";
 
 /**

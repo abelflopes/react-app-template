@@ -1,6 +1,4 @@
-// React
 import React from "react";
-// Layouts
 import { DefaultLayout } from "@layouts/Default";
 
 export const HomeView = (): React.ReactElement => (

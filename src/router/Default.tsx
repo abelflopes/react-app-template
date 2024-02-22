@@ -1,6 +1,4 @@
-// React
 import React from "react";
-// Router
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { type RouteIndex, routesList } from "./routes-list";
 import { viewsMap } from "./view-mapping";

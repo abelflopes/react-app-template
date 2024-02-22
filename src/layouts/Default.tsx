@@ -1,8 +1,5 @@
-/// React
 import React from "react";
-// Layouts
 import { type LayoutProps } from "@layouts/types";
-// Components
 import { GlobalNotifications } from "@components/global-notifications";
 import { Nav } from "@components/nav";
 

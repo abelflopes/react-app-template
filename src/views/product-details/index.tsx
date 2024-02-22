@@ -1,14 +1,10 @@
-// React
 import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
-// Components
 import { Alert } from "@components/alert";
 import { DefaultLayout } from "@layouts/Default";
 import { ProductCard } from "@components/product-card";
-// Store
 import { Store } from "@store/index";
-// Router
 import { routesList } from "@router/routes-list";
 
 export const ProductDetailsMainView = (): React.ReactElement => {

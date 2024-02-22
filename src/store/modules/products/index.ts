@@ -1,6 +1,5 @@
 // API
 import * as FakeStoreAPI from "@services/fake-store-api";
-// Utils
 import { type Module, type State } from "./types";
 import { type ActionCreator } from "@store/common/types";
 import { createStore } from "@store/common/create-store";

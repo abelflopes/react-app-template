@@ -1,17 +1,13 @@
-// React
 import { Link } from "react-router-dom";
 import React, { useMemo } from "react";
 import { generatePath } from "react-router";
-// Components
 import { Button } from "@components/button";
 import { CartButton } from "@components/cart-button";
 import { DefaultLayout } from "@layouts/Default";
 import { Filters } from "@components/filters";
 import { PriceTag } from "@components/price-tag";
-// Store
 import { Store } from "@store/index";
 import { selectFiltered } from "@store/selectors";
-// Router
 import { routesList } from "@router/routes-list";
 
 export const ProductsView = (): React.ReactElement => {

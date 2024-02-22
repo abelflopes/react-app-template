@@ -1,12 +1,8 @@
-// Styles
 import "./index.scss";
-/// React
 import { NavLink, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
-// Routes
 import { routesList } from "@router/routes-list";
-// Store
 import { selectItemCount } from "@store/selectors";
 
 export const Nav = (): React.ReactElement => {

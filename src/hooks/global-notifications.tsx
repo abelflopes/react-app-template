@@ -1,6 +1,4 @@
-// React
 import { useEffect } from "react";
-// Redux
 import { type State } from "@store/modules/notifications/types";
 import { Store } from "@store/index";
 

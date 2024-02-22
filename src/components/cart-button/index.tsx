@@ -1,9 +1,6 @@
-// React
 import React from "react";
-// Store
 import { Store } from "@store/index";
 import { selectById } from "@store/selectors";
-// Components
 import { Button } from "@components/button";
 
 interface CartButtonProps {

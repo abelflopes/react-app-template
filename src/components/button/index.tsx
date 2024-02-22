@@ -1,8 +1,5 @@
-// React
 import React from "react";
-// Utils
 import classNames from "classnames";
-// Styles
 import styles from "./index.module.scss";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {

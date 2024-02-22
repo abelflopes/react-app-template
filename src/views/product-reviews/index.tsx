@@ -1,13 +1,9 @@
-// React
 import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
-// Router
 import { routesList } from "@router/routes-list";
-// Components
 import { Card } from "@components/card";
 import { DefaultLayout } from "@layouts/Default";
-// Store
 import { Store } from "@store/index";
 import { selectById } from "@store/selectors";
 

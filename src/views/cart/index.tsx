@@ -1,12 +1,9 @@
-// React
 import React from "react";
-// Components
 import { Alert } from "@components/alert";
 import { Button } from "@components/button";
 import { DefaultLayout } from "@layouts/Default";
 import { PriceTag } from "@components/price-tag";
 import { ProductCard } from "@components/product-card";
-// Store
 import { Store } from "@store/index";
 import { selectCart } from "@store/selectors";
 

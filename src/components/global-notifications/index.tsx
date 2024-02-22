@@ -1,8 +1,5 @@
-// React
 import React, { useEffect } from "react";
-// Components
 import { Alert } from "@components/alert";
-// Redux
 import { Store } from "@store/index";
 
 export const GlobalNotifications = (): React.ReactElement[] => {

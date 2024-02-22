@@ -1,9 +1,6 @@
-// React
 import { NavLink } from "react-router-dom";
 import React from "react";
-// Router
 import { routesList } from "@router/routes-list";
-// Layouts
 import { ErrorLayout } from "@layouts/Error";
 
 export const Error404View = (): React.ReactElement => (

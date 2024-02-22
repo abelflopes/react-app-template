@@ -1,10 +1,6 @@
-// React
 import React from "react";
-// Icons
 import { FaX } from "react-icons/fa6";
-// Components
 import { Button } from "@components/button";
-// Styles
 import styles from "./index.module.scss";
 
 export interface AlertProps {

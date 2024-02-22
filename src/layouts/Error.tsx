@@ -1,6 +1,4 @@
-/// React
 import React from "react";
-// Layouts
 import { type LayoutProps } from "@layouts/types";
 
 interface ErrorLayoutProps extends LayoutProps {

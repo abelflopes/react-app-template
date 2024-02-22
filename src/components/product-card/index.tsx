@@ -1,11 +1,8 @@
-// React
 import React from "react";
-// Components
 import { Alert } from "@components/alert";
 import { Card } from "@components/card";
 import { CartButton } from "@components/cart-button";
 import { PriceTag } from "@components/price-tag";
-// Store
 import { selectById } from "@store/selectors";
 
 interface ProductCardProps {
