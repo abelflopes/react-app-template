@@ -1,5 +1,7 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
 @mixin app-styles {
   :global(#root) {
     @content;
   }
 }
+/* stylelint-enable */

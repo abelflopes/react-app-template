@@ -1,10 +1,8 @@
 import React from "react";
 import { Alert } from "@react-ck/alert";
-import { Card, CardImage } from "@react-ck/card";
-import { CartButton } from "@components/cart-button";
+import { Card } from "@react-ck/card";
 import { PriceTag } from "@components/price-tag";
 import { selectById } from "@store/selectors";
-import { Divider } from "@react-ck/divider";
 import { Link, generatePath } from "react-router-dom";
 import { routesList } from "@router/routes-list";
 import { Image } from "@react-ck/provisional";
