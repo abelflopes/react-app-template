@@ -7,6 +7,9 @@ import { selectById } from "@store/selectors";
 import { Divider } from "@react-ck/divider";
 import { Link, generatePath } from "react-router-dom";
 import { routesList } from "@router/routes-list";
+import { Image } from "@react-ck/provisional";
+import styles from "./index.module.scss";
+import { Text } from "@react-ck/text";
 
 interface ProductCardProps {
   id: number;
@@ -20,23 +23,23 @@ export const ProductCard = ({ id }: Readonly<ProductCardProps>): React.ReactElem
       {product === undefined && <Alert title="Unable to display product" />}
 
       {product !== undefined && (
-        <Card key={product.id}>
-          <CardImage src={product.image} />
-          <p>{product.title}</p>
-          <PriceTag value={product.price} />
-          <p>{product.category}</p>
+        <Card key={product.id} skin="ghost">
+          <Image className={styles.image} src={product.image} alt={product.title} />
 
-          <Divider />
-          <p>{product.description}</p>
+          <PriceTag className={styles.price} value={product.price} />
 
-          <Link
-            to={generatePath(routesList.productDetailsReviews, {
-              id: String(id),
-            })}>
-            Reviews
-          </Link>
-
-          <CartButton id={product.id} />
+          <Text
+            variation={["bold", "link"]}
+            as={
+              <Link
+                className={styles.link}
+                to={generatePath(routesList.productDetails, {
+                  id: String(id),
+                })}
+              />
+            }>
+            {product.title}
+          </Text>
         </Card>
       )}
     </>

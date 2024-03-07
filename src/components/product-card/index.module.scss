@@ -1,0 +1,20 @@
+@import "@react-ck/theme";
+@import "@react-ck/scss-utils";
+@import "../../styles//mixins";
+
+@include app-styles {
+  .image {
+    height: 200px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .price {
+    margin-top: get-spacing(1);
+    margin-bottom: get-spacing(1);
+  }
+
+  .link {
+    display: block;
+  }
+}

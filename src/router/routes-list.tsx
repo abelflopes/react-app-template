@@ -5,12 +5,10 @@
 
 export const routesList = {
   home: "/",
+  products: "/products",
   cart: "/cart",
   productDetails: "/products/:id",
-  productDetailsMain: "/products/:id/details",
-  productDetailsReviews: "/products/:id/reviews",
-  products: "/products",
-  productsList: "/products-list",
+  productReviews: "/products/:id/reviews",
   error: "*",
 } as const;
 

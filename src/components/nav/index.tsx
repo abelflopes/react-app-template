@@ -5,6 +5,8 @@ import { generatePath } from "react-router";
 import { routesList } from "@router/routes-list";
 import { selectItemCount } from "@store/selectors";
 import { Badge } from "@react-ck/badge";
+import { Text } from "@react-ck/text";
+import classNames from "classnames";
 
 export const Nav = (): React.ReactElement => {
   const params = useParams();
@@ -16,14 +18,6 @@ export const Nav = (): React.ReactElement => {
       {
         to: generatePath(routesList.home, params),
         label: "Home",
-      },
-      {
-        to: generatePath(routesList.products, params),
-        label: "Products",
-      },
-      {
-        to: generatePath(routesList.productsList, params),
-        label: `Products List (redirect)`,
       },
       {
         to: generatePath(routesList.cart, params),
@@ -40,14 +34,11 @@ export const Nav = (): React.ReactElement => {
   return (
     <nav className={styles.nav}>
       {links.map((i) => (
-        <NavLink
+        <Text
           key={i.to}
-          to={i.to}
-          className={({ isActive }): string =>
-            [styles.nav__link, ...(isActive ? ["is-active"] : [])].join(" ")
-          }>
-          {i.label}
-        </NavLink>
+          className={classNames(styles.nav__link)}
+          as={<NavLink to={i.to}>{i.label}</NavLink>}
+        />
       ))}
     </nav>
   );

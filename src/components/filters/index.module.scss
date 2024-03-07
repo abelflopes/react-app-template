@@ -1,0 +1,9 @@
+@import "@react-ck/theme";
+@import "@react-ck/scss-utils";
+@import "../../styles//mixins";
+
+@include app-styles {
+  .root {
+    margin-bottom: get-spacing(2);
+  }
+}

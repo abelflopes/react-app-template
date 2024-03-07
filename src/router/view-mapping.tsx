@@ -4,7 +4,6 @@ import { type RouteIndex } from "./routes-list";
 
 import { CartView } from "@views/cart";
 import { Error404View } from "@views/error-404";
-import { HomeView } from "@views/home";
 import { ProductDetailsMainView } from "@views/product-details";
 import { ProductDetailsReviewView } from "@views/product-reviews";
 import { ProductsView } from "@views/products";
@@ -13,13 +12,11 @@ import { RedirectView } from "./Redirect";
 type ViewsMap = { [key in RouteIndex]: NonNullable<RouteProps["Component"]> };
 
 export const viewsMap: ViewsMap = {
-  home: () => <HomeView />,
+  home: () => <RedirectView to="products" />,
   cart: () => <CartView />,
-  productDetails: () => <RedirectView to="productDetailsMain" />,
-  productDetailsMain: () => <ProductDetailsMainView />,
-  productDetailsReviews: () => <ProductDetailsReviewView />,
+  productDetails: () => <ProductDetailsMainView />,
+  productReviews: () => <ProductDetailsReviewView />,
   products: () => <ProductsView />,
-  productsList: () => <RedirectView to="products" />,
   error: () => <Error404View />,
 };
 

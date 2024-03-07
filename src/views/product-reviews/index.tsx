@@ -31,7 +31,7 @@ export const ProductDetailsReviewView = (): React.ReactElement => {
       )}
 
       <Link
-        to={generatePath(routesList.productDetailsMain, {
+        to={generatePath(routesList.productDetails, {
           id: params.id ?? null,
         })}>
         Details

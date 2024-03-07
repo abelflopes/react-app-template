@@ -9,6 +9,7 @@ import { CartButton } from "@components/cart-button";
 import { Link, generatePath } from "react-router-dom";
 import { routesList } from "@router/routes-list";
 import { DataTable } from "@react-ck/data-table";
+import { Text } from "@react-ck/text";
 
 export const CartView = (): React.ReactElement => {
   const cart = selectCart();
@@ -29,16 +30,7 @@ export const CartView = (): React.ReactElement => {
 
       {cart.products.length > 0 && (
         <>
-          <h3>
-            Total: <PriceTag value={cart.total} />
-          </h3>
-
-          <Button
-            onClick={(): void => {
-              emptyCart();
-            }}>
-            Checkout
-          </Button>
+          <Text type="h1">Cart</Text>
 
           <DataTable
             skin="bordered"
@@ -56,6 +48,15 @@ export const CartView = (): React.ReactElement => {
             }))}
             autoHeaders
           />
+
+          <Text type="h3">Total: € {cart.total}</Text>
+
+          <Button
+            onClick={(): void => {
+              emptyCart();
+            }}>
+            Checkout
+          </Button>
         </>
       )}
     </DefaultLayout>

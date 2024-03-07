@@ -75,23 +75,23 @@ export const ProductsView = (): React.ReactElement => {
       <GridContainer>
         {Boolean(loading) && (
           <>
-            <GridColumn size={3}>
+            <GridColumn size={2}>
               <Skeleton />
             </GridColumn>
-            <GridColumn size={3}>
+            <GridColumn size={2}>
               <Skeleton />
             </GridColumn>
-            <GridColumn size={3}>
+            <GridColumn size={2}>
               <Skeleton />
             </GridColumn>
-            <GridColumn size={3}>
+            <GridColumn size={2}>
               <Skeleton />
             </GridColumn>
           </>
         )}
 
         {productsList.map(({ id }) => (
-          <GridColumn key={id} size={3}>
+          <GridColumn key={id} size={2}>
             <ProductCard id={id} />
           </GridColumn>
         ))}
