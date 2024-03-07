@@ -1,7 +1,7 @@
 import React from "react";
 import { Store } from "@store/index";
 import { selectById } from "@store/selectors";
-import { Button } from "@components/button";
+import { Button } from "@react-ck/button";
 
 interface CartButtonProps {
   id: number;
@@ -20,6 +20,7 @@ export const CartButton = ({ id }: Readonly<CartButtonProps>): React.ReactElemen
     <>
       {!cartItems.includes(product.id) && (
         <Button
+          skin="secondary"
           onClick={(): void => {
             add(product.id);
           }}>
@@ -29,6 +30,7 @@ export const CartButton = ({ id }: Readonly<CartButtonProps>): React.ReactElemen
 
       {cartItems.includes(product.id) && (
         <Button
+          skin="secondary"
           onClick={(): void => {
             remove(product.id);
           }}>

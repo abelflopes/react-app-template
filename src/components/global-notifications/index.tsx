@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Alert } from "@components/alert";
+import { Alert } from "@react-ck/alert";
 import { Store } from "@store/index";
 
 export const GlobalNotifications = (): React.ReactElement[] => {
@@ -24,7 +24,8 @@ export const GlobalNotifications = (): React.ReactElement[] => {
     <Alert
       key={notification.id}
       title={notification.title}
-      onClose={(): void => {
+      skin={notification.type}
+      onClick={(): void => {
         removeNotification(notification.id);
       }}>
       {notification.description}

@@ -21,18 +21,18 @@ const createAddAction: ActionCreator<Module, Module["add"]> = (set) => (id) => {
   }));
 
   notificationsStore.getState().add({
-    type: "success",
+    type: "positive",
     description: "Successfully added to cart",
   });
 };
 
 const createRemoveAction: ActionCreator<Module, Module["remove"]> = (set) => (id) => {
   set((state) => ({
-    data: [...state.data.filter((i) => i !== id), id],
+    data: state.data.filter((i) => i !== id),
   }));
 
   notificationsStore.getState().add({
-    type: "success",
+    type: "positive",
     description: "Successfully removed from cart",
   });
 };

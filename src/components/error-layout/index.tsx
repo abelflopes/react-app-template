@@ -1,7 +1,8 @@
+import { Container } from "@react-ck/container";
 import React from "react";
-import { type LayoutProps } from "@layouts/types";
 
-interface ErrorLayoutProps extends LayoutProps {
+interface ErrorLayoutProps {
+  children?: React.ReactNode | React.ReactNode[];
   title: React.ReactNode;
   description: React.ReactNode;
 }
@@ -11,10 +12,10 @@ export const ErrorLayout = ({
   description,
   children,
 }: Readonly<ErrorLayoutProps>): React.ReactElement => (
-  <main className="container">
+  <Container>
     <h2>{title}</h2>
     <p>{description}</p>
 
     {children}
-  </main>
+  </Container>
 );

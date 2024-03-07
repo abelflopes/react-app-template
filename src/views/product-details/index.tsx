@@ -1,11 +1,9 @@
-import { Link, useParams } from "react-router-dom";
 import React from "react";
-import { generatePath } from "react-router";
-import { Alert } from "@components/alert";
-import { DefaultLayout } from "@layouts/Default";
+import { useParams } from "react-router-dom";
+import { Alert } from "@react-ck/alert";
+import { DefaultLayout } from "@components/default-layout";
 import { ProductCard } from "@components/product-card";
 import { Store } from "@store/index";
-import { routesList } from "@router/routes-list";
 
 export const ProductDetailsMainView = (): React.ReactElement => {
   const params = useParams();
@@ -26,13 +24,6 @@ export const ProductDetailsMainView = (): React.ReactElement => {
       {params.id === undefined && <Alert title="Unable to get product id" />}
 
       {params.id !== undefined && <ProductCard id={Number(params.id)} />}
-
-      <Link
-        to={generatePath(routesList.productDetailsReviews, {
-          id: params.id ?? null,
-        })}>
-        Reviews
-      </Link>
     </DefaultLayout>
   );
 };

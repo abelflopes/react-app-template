@@ -1,11 +1,14 @@
 import React from "react";
-import { Alert } from "@components/alert";
-import { Button } from "@components/button";
-import { DefaultLayout } from "@layouts/Default";
+import { Alert } from "@react-ck/alert";
+import { Button } from "@react-ck/button";
+import { DefaultLayout } from "@components/default-layout";
 import { PriceTag } from "@components/price-tag";
-import { ProductCard } from "@components/product-card";
 import { Store } from "@store/index";
 import { selectCart } from "@store/selectors";
+import { CartButton } from "@components/cart-button";
+import { Link, generatePath } from "react-router-dom";
+import { routesList } from "@router/routes-list";
+import { DataTable } from "@react-ck/data-table";
 
 export const CartView = (): React.ReactElement => {
   const cart = selectCart();
@@ -37,9 +40,22 @@ export const CartView = (): React.ReactElement => {
             Checkout
           </Button>
 
-          {cart.products.map(({ id }) => (
-            <ProductCard key={id} id={id} />
-          ))}
+          <DataTable
+            skin="bordered"
+            data={cart.products.map((product) => ({
+              title: (
+                <Link
+                  to={generatePath(routesList.productDetails, {
+                    id: String(product.id),
+                  })}>
+                  {product.title}
+                </Link>
+              ),
+              price: <PriceTag value={product.price} />,
+              action: <CartButton id={product.id} />,
+            }))}
+            autoHeaders
+          />
         </>
       )}
     </DefaultLayout>

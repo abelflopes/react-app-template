@@ -2,8 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
 import { routesList } from "@router/routes-list";
-import { Card } from "@components/card";
-import { DefaultLayout } from "@layouts/Default";
+import { Card } from "@react-ck/card";
+import { DefaultLayout } from "@components/default-layout";
 import { Store } from "@store/index";
 import { selectById } from "@store/selectors";
 
@@ -21,16 +21,13 @@ export const ProductDetailsReviewView = (): React.ReactElement => {
 
   return (
     <DefaultLayout>
-      <h2>Product Details</h2>
+      <h2>Product Reviews</h2>
 
       {product !== undefined && (
-        <Card
-          label={product.title}
-          data={{
-            rating: product.rating.rate,
-            count: product.rating.count,
-          }}
-        />
+        <Card>
+          {product.title}
+          Rating: {product.rating.rate} ({product.rating.count} reviews)
+        </Card>
       )}
 
       <Link

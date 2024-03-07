@@ -1,5 +1,5 @@
 import React from "react";
-import { DefaultLayout } from "@layouts/Default";
+import { DefaultLayout } from "@components/default-layout";
 
 export const HomeView = (): React.ReactElement => (
   <DefaultLayout>

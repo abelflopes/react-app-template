@@ -1,10 +1,10 @@
-import "./index.scss";
 import React from "react";
+import { Card } from "@react-ck/card";
 
 interface FiltersProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
 export const Filters = ({ children }: Readonly<FiltersProps>): React.ReactElement => (
-  <section className="filters">{children}</section>
+  <Card>{children}</Card>
 );

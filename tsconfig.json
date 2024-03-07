@@ -20,7 +20,6 @@
     /* Aliases */
     "paths": {
       "@components/*": ["./src/components/*"],
-      "@layouts/*": ["./src/layouts/*"],
       "@router/*": ["./src/router/*"],
       "@services/*": ["./src/services/*"],
       "@store/*": ["./src/store/*"],

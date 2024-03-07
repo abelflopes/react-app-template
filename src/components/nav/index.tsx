@@ -1,9 +1,10 @@
-import "./index.scss";
-import { NavLink, useParams } from "react-router-dom";
+import styles from "./index.module.scss";
 import React from "react";
+import { NavLink, useParams } from "react-router-dom";
 import { generatePath } from "react-router";
 import { routesList } from "@router/routes-list";
 import { selectItemCount } from "@store/selectors";
+import { Badge } from "@react-ck/badge";
 
 export const Nav = (): React.ReactElement => {
   const params = useParams();
@@ -26,20 +27,24 @@ export const Nav = (): React.ReactElement => {
       },
       {
         to: generatePath(routesList.cart, params),
-        label: `Cart (${cartItemsCount})`,
+        label: (
+          <>
+            Cart&nbsp;<Badge skin="negative">{cartItemsCount}</Badge>
+          </>
+        ),
       },
     ],
     [cartItemsCount, params],
   );
 
   return (
-    <nav className="nav">
+    <nav className={styles.nav}>
       {links.map((i) => (
         <NavLink
           key={i.to}
           to={i.to}
           className={({ isActive }): string =>
-            ["nav__link", ...(isActive ? ["is-active"] : [])].join(" ")
+            [styles.nav__link, ...(isActive ? ["is-active"] : [])].join(" ")
           }>
           {i.label}
         </NavLink>

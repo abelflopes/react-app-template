@@ -8,7 +8,7 @@ export interface Notification {
   /** Id to identify a specific notification in order remove it from current state. */
   id: number;
   /** Notification types */
-  type: "error" | "success" | "warning" | "info";
+  type: "negative" | "average" | "positive";
   /** Notification title */
   title?: string;
   /** Notification description */

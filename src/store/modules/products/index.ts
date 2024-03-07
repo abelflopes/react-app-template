@@ -29,7 +29,7 @@ const createLoadAction: ActionCreator<Module, Module["load"]> = (set) => async (
     set(() => ({ error: formattedError }));
 
     notificationsStore.getState().add({
-      type: "error",
+      type: "negative",
       title: "Failed to load products",
       description: formattedError,
     });
