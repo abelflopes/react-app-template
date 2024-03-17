@@ -2,7 +2,7 @@ import "./styles/index.scss";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { DefaultRouter } from "@router/Default";
-import { Manager } from "@react-ck/manager";
+import { Manager } from "react-ck";
 
 const rootEl = document.querySelector("#root");
 

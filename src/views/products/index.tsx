@@ -1,14 +1,10 @@
 import React, { useMemo } from "react";
-import { Button } from "@react-ck/button";
 import { DefaultLayout } from "@components/default-layout";
 import { Filters } from "@components/filters";
 import { Store } from "@store/index";
 import { selectFiltered } from "@store/selectors";
-import { GridColumn, GridContainer } from "@react-ck/grid";
 import { ProductCard } from "@components/product-card";
-import { EmptyState } from "@react-ck/empty-state";
-import { Skeleton } from "@react-ck/skeleton";
-import { Icon } from "@react-ck/icon";
+import { Grid, Skeleton, Button, Icon, EmptyState } from "react-ck";
 
 export const ProductsView = (): React.ReactElement => {
   const [filterQuery, setFilterQuery] = React.useState("");
@@ -72,30 +68,30 @@ export const ProductsView = (): React.ReactElement => {
         </Button>
       </Filters>
 
-      <GridContainer>
+      <Grid>
         {Boolean(loading) && (
           <>
-            <GridColumn size={2}>
+            <Grid.Column size={2}>
               <Skeleton />
-            </GridColumn>
-            <GridColumn size={2}>
+            </Grid.Column>
+            <Grid.Column size={2}>
               <Skeleton />
-            </GridColumn>
-            <GridColumn size={2}>
+            </Grid.Column>
+            <Grid.Column size={2}>
               <Skeleton />
-            </GridColumn>
-            <GridColumn size={2}>
+            </Grid.Column>
+            <Grid.Column size={2}>
               <Skeleton />
-            </GridColumn>
+            </Grid.Column>
           </>
         )}
 
         {productsList.map(({ id }) => (
-          <GridColumn key={id} size={2}>
+          <Grid.Column key={id} size={2}>
             <ProductCard id={id} />
-          </GridColumn>
+          </Grid.Column>
         ))}
-      </GridContainer>
+      </Grid>
 
       {productsCount > 0 && productsList.length === 0 && <EmptyState>No products found</EmptyState>}
     </DefaultLayout>

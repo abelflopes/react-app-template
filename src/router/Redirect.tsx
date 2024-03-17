@@ -1,5 +1,4 @@
-import { useEffect, useMemo } from "react";
-import type React from "react";
+import { useEffect, useMemo, type default as React } from "react";
 import { generatePath, useLocation, useParams, useSearchParams } from "react-router-dom";
 import { useNavigate, type PathParam } from "react-router";
 import { type RouteIndex, routesList } from "./routes-list";

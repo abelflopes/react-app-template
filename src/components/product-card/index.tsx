@@ -1,13 +1,10 @@
 import React from "react";
-import { Alert } from "@react-ck/alert";
-import { Card } from "@react-ck/card";
 import { PriceTag } from "@components/price-tag";
 import { selectById } from "@store/selectors";
 import { Link, generatePath } from "react-router-dom";
 import { routesList } from "@router/routes-list";
-import { Image } from "@react-ck/provisional";
 import styles from "./index.module.scss";
-import { Text } from "@react-ck/text";
+import { Image, Card, Text, Alert } from "react-ck";
 
 interface ProductCardProps {
   id: number;

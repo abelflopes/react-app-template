@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import React from "react";
 import { generatePath } from "react-router";
 import { routesList } from "@router/routes-list";
-import { Card } from "@react-ck/card";
+import { Card } from "react-ck";
 import { DefaultLayout } from "@components/default-layout";
 import { Store } from "@store/index";
 import { selectById } from "@store/selectors";

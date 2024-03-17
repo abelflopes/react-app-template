@@ -1,7 +1,7 @@
 import React from "react";
 import { GlobalNotifications } from "@components/global-notifications";
 import { Nav } from "@components/nav";
-import { Container } from "@react-ck/container";
+import { Container } from "react-ck";
 
 export interface DefaultLayoutProps {
   children?: React.ReactNode | React.ReactNode[];

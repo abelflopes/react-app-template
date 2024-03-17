@@ -1,7 +1,7 @@
 import React from "react";
 import { Store } from "@store/index";
 import { selectById } from "@store/selectors";
-import { Button } from "@react-ck/button";
+import { Button } from "react-ck";
 
 interface CartButtonProps {
   id: number;

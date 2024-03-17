@@ -1,5 +1,5 @@
 import React from "react";
-import { Chip } from "@react-ck/chip";
+import { Chip } from "react-ck";
 
 interface PriceTagProps {
   className?: string;

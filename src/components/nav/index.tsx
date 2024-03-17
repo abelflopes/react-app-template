@@ -4,8 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { generatePath } from "react-router";
 import { routesList } from "@router/routes-list";
 import { selectItemCount } from "@store/selectors";
-import { Badge } from "@react-ck/badge";
-import { Text } from "@react-ck/text";
+import { Badge, Text } from "react-ck";
 import classNames from "classnames";
 
 export const Nav = (): React.ReactElement => {

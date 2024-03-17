@@ -1,6 +1,5 @@
 import React from "react";
-import { Alert } from "@react-ck/alert";
-import { Button } from "@react-ck/button";
+import { Alert, Button, DataTable, Text } from "react-ck";
 import { DefaultLayout } from "@components/default-layout";
 import { PriceTag } from "@components/price-tag";
 import { Store } from "@store/index";
@@ -8,8 +7,6 @@ import { selectCart } from "@store/selectors";
 import { CartButton } from "@components/cart-button";
 import { Link, generatePath } from "react-router-dom";
 import { routesList } from "@router/routes-list";
-import { DataTable } from "@react-ck/data-table";
-import { Text } from "@react-ck/text";
 
 export const CartView = (): React.ReactElement => {
   const cart = selectCart();

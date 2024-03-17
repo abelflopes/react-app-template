@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "@react-ck/card";
+import { Card } from "react-ck";
 import styles from "./index.module.scss";
 
 interface FiltersProps {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Alert } from "@react-ck/alert";
+import { Alert } from "react-ck";
 import { Store } from "@store/index";
 
 export const GlobalNotifications = (): React.ReactElement[] => {

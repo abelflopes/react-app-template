@@ -1,6 +1,5 @@
-import { Container } from "@react-ck/container";
-import { Text } from "@react-ck/text";
 import React from "react";
+import { Container, Text } from "react-ck";
 
 interface ErrorLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
@@ -14,7 +13,7 @@ export const ErrorLayout = ({
   children,
 }: Readonly<ErrorLayoutProps>): React.ReactElement => (
   <Container>
-    <Text type="h1">{title}</Text>
+    <Text variation="h1">{title}</Text>
 
     <Text>{description}</Text>
 
