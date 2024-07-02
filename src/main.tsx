@@ -3,6 +3,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { DefaultRouter } from "@router/Default";
 import { Manager, Snackbar } from "react-ck";
+import { ErrorBoundary } from "@components/error-boundary";
 
 const rootEl = document.querySelector("#root");
 
@@ -12,7 +13,9 @@ createRoot(rootEl).render(
   <React.StrictMode>
     <Manager>
       <Snackbar>
-        <DefaultRouter />
+        <ErrorBoundary>
+          <DefaultRouter />
+        </ErrorBoundary>
       </Snackbar>
     </Manager>
   </React.StrictMode>,

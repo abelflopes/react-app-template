@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "prepare": "husky install",
-    "start": "vite",
+    "start": "vite --host",
     "build": "vite build",
     "lint": "run-s lint:*",
     "lint:code": "eslint . --ext ts,tsx --cache",
@@ -21,6 +21,7 @@
     "react": "^18.2.0",
     "react-ck": "^1.2.10",
     "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.0.13",
     "react-router": "^6.14.2",
     "react-router-dom": "^6.14.2",
     "zustand": "^4.4.1"

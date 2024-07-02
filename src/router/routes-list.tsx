@@ -9,7 +9,8 @@ export const routesList = {
   cart: "/cart",
   productDetails: "/products/:id",
   productReviews: "/products/:id/reviews",
-  error: "*",
+  error: "/error",
+  notFound: "*",
 } as const;
 
 export type RouteIndex = keyof typeof routesList;

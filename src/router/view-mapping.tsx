@@ -3,7 +3,7 @@ import { type RouteProps } from "react-router-dom";
 import { type RouteIndex } from "./routes-list";
 
 import { CartView } from "@views/cart";
-import { Error404View } from "@views/error-404";
+import { ErrorView } from "@views/error";
 import { ProductDetailsMainView } from "@views/product-details";
 import { ProductDetailsReviewView } from "@views/product-reviews";
 import { ProductsView } from "@views/products";
@@ -17,7 +17,8 @@ export const viewsMap: ViewsMap = {
   productDetails: () => <ProductDetailsMainView />,
   productReviews: () => <ProductDetailsReviewView />,
   products: () => <ProductsView />,
-  error: () => <Error404View />,
+  error: () => <ErrorView />,
+  notFound: () => <ErrorView error="The requested page was not found" />,
 };
 
 /* eslint-enable */
