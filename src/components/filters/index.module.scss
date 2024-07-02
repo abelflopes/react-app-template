@@ -5,4 +5,10 @@
   .root {
     margin-bottom: get-spacing(2);
   }
+
+  .content {
+    display: flex;
+    gap: get-spacing(1);
+    align-items: center;
+  }
 }

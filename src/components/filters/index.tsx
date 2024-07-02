@@ -7,5 +7,7 @@ interface FiltersProps {
 }
 
 export const Filters = ({ children }: Readonly<FiltersProps>): React.ReactElement => (
-  <Card className={styles.root}>{children}</Card>
+  <Card className={styles.root}>
+    <div className={styles.content}>{children}</div>
+  </Card>
 );

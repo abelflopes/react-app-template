@@ -4,7 +4,7 @@ import { Filters } from "@components/filters";
 import { Store } from "@store/index";
 import { selectFiltered } from "@store/selectors";
 import { ProductCard } from "@components/product-card";
-import { Grid, Skeleton, Button, Icon, EmptyState } from "react-ck";
+import { Grid, Skeleton, Button, Icon, EmptyState, Input, Select, IconClose } from "react-ck";
 
 export const ProductsView = (): React.ReactElement => {
   const [filterQuery, setFilterQuery] = React.useState("");
@@ -35,21 +35,7 @@ export const ProductsView = (): React.ReactElement => {
   return (
     <DefaultLayout>
       <Filters>
-        <select
-          defaultValue=""
-          value={selectedCategory}
-          onChange={(e): void => {
-            setSelectedCategory(e.target.value.length > 0 ? e.target.value : undefined);
-          }}>
-          <option value="" disabled>
-            Category
-          </option>
-          {categories.map((i) => (
-            <option key={i}>{i}</option>
-          ))}
-        </select>
-
-        <input
+        <Input
           type="search"
           placeholder="Search"
           value={filterQuery}
@@ -58,13 +44,27 @@ export const ProductsView = (): React.ReactElement => {
           }}
         />
 
+        <Select
+          defaultValue=""
+          value={selectedCategory}
+          onChange={(e): void => {
+            setSelectedCategory(e.target.value.length > 0 ? e.target.value : undefined);
+          }}>
+          <Select.Option value="" disabled>
+            Category
+          </Select.Option>
+          {categories.map((i) => (
+            <Select.Option key={i}>{i}</Select.Option>
+          ))}
+        </Select>
+
         <Button
           skin="secondary"
           onClick={(): void => {
             setSelectedCategory("");
             setFilterQuery("");
           }}>
-          <Icon name="close" />
+          <Icon Icon={IconClose} />
         </Button>
       </Filters>
 
@@ -86,11 +86,12 @@ export const ProductsView = (): React.ReactElement => {
           </>
         )}
 
-        {productsList.map(({ id }) => (
-          <Grid.Column key={id} size={2}>
-            <ProductCard id={id} />
-          </Grid.Column>
-        ))}
+        {!loading &&
+          productsList.map(({ id }) => (
+            <Grid.Column key={id} size={2}>
+              <ProductCard id={id} />
+            </Grid.Column>
+          ))}
       </Grid>
 
       {productsCount > 0 && productsList.length === 0 && <EmptyState>No products found</EmptyState>}

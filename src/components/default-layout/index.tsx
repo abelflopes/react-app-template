@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalNotifications } from "@components/global-notifications";
+import { useGlobalNotifications } from "@hooks/global-notifications";
 import { Nav } from "@components/nav";
 import { Container } from "react-ck";
 
@@ -7,10 +7,13 @@ export interface DefaultLayoutProps {
   children?: React.ReactNode | React.ReactNode[];
 }
 
-export const DefaultLayout = ({ children }: Readonly<DefaultLayoutProps>): React.ReactElement => (
-  <Container>
-    <Nav />
-    <GlobalNotifications />
-    {children}
-  </Container>
-);
+export const DefaultLayout = ({ children }: Readonly<DefaultLayoutProps>): React.ReactElement => {
+  useGlobalNotifications();
+
+  return (
+    <Container>
+      <Nav />
+      {children}
+    </Container>
+  );
+};

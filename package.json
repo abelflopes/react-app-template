@@ -19,7 +19,7 @@
     "auto-zustand-selectors-hook": "^2.0.0",
     "classnames": "^2.3.2",
     "react": "^18.2.0",
-    "react-ck": "^1.2.4",
+    "react-ck": "^1.2.10",
     "react-dom": "^18.2.0",
     "react-router": "^6.14.2",
     "react-router-dom": "^6.14.2",
@@ -52,6 +52,7 @@
     "stylelint-scss": "^5.0.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
+    "vite-plugin-commonjs": "^0.10.1",
     "vite-tsconfig-paths": "^4.2.0"
   }
 }

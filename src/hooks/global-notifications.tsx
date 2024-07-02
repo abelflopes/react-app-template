@@ -1,24 +1,30 @@
-import { useEffect } from "react";
-import { type State } from "@store/modules/notifications/types";
+import React, { useEffect } from "react";
 import { Store } from "@store/index";
+import { Alert, useSnackbarContext } from "react-ck";
 
-export const useGlobalNotifications = (): [State["data"], (id: number) => void] => {
+export const useGlobalNotifications = (): void => {
+  const snackbar = useSnackbarContext();
   const notifications = Store.notifications.useData();
   const removeNotification = Store.notifications.useRemove();
 
   useEffect(() => {
-    if (!notifications.length) return;
-
     notifications.forEach((notification) => {
-      const timeout = setTimeout(() => {
-        removeNotification(notification.id);
+      removeNotification(notification.id);
+
+      const id = snackbar.add((id) => (
+        <Alert
+          title={notification.title}
+          skin={notification.type}
+          onClick={(): void => {
+            snackbar.remove(id);
+          }}>
+          {notification.description}
+        </Alert>
+      ));
+
+      setTimeout(() => {
+        snackbar.remove(id);
       }, 8000);
-
-      return () => {
-        clearTimeout(timeout);
-      };
     });
-  }, [notifications, removeNotification]);
-
-  return [notifications, removeNotification];
+  }, [snackbar, notifications, removeNotification]);
 };
